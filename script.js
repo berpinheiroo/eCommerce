@@ -22,14 +22,36 @@ function ProcurarID() {
     var index = parseInt(prompt("Insira o ID do produto que deseja buscar"))
     console.log("O produto com o ID", index, "tem nome:", nomes[index], ", preco", precos[index], "R$", "e avaliacao:", avaliacoes[index])
 }
-ProcurarID()
 
 
-function ProcurarNome(){
+
+function ProcurarNome() {
     var infoNome = prompt("Insira o nome do produto que deseja buscar")
-    for(i = 0; i < nomes.length; i++){
-        if(infoNome == nomes[i])
-        console.log("O produto com o nome", nomes[i], "tem ID:", ids[i], ", preco", precos[i], "R$", "e avaliacao:", avaliacoes[i])
+    for (i = 0; i < nomes.length; i++) {
+        if (infoNome == nomes[i])
+            console.log("O produto com o nome", nomes[i], "tem ID:", ids[i], ", preco", precos[i], "R$", "e avaliacao:", avaliacoes[i])
     }
 }
-ProcurarNome()
+
+var maiorNumero = 0
+var idsOrdenados = []
+var contadorIds = 0
+function OrdemID() {
+    for (var index = 0; index < ids.length; index++) {
+    maiorNumero = ids[index]
+        for (var index2 = 0; index2 < ids.length; index2++) {
+            if (maiorNumero < ids[index2]) {
+                maiorNumero = ids[index2]
+            }
+        }
+        for(var index3 = 0; index3 < ids.length; index3++){
+            if(maiorNumero == ids[index3]){
+                idsOrdenados[index] = ids[index3]
+                ids[index3] = 0
+            }
+        }
+    }
+}
+
+OrdemID()
+console.log(idsOrdenados)
