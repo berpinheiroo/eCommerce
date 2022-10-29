@@ -62,7 +62,6 @@ function OrdemID() {
     avaliacoes = avaliacoesId
     ids = idsOrdenados
 }
-OrdemID()
 
 
 var avaliacoesPreco = []
@@ -95,7 +94,6 @@ function OrdemPreco() {
     avaliacoes = avaliacoesPreco
     ids = idsPreco
 }
-OrdemPreco()
 
 var idsAvaliacao = []
 var precosAvaliacao = []
@@ -127,4 +125,16 @@ function OrdemAvaliacao() {
     avaliacoes = avaliacoesOrdenadas
     ids = idsAvaliacao
 }
-OrdemAvaliacao()
+
+var precoAtualizado
+var idAtualizar = prompt("Insira o ID do produto que queira atualizar")
+
+function AtualizarPreco(idAtualizar) {
+    precoAtualizado = parseInt(prompt("Insira um novo valor para o produto"))
+    for(var index = 0; index < ids.length; index++){
+        if(idAtualizar == ids[index]){
+            precos[index] = precoAtualizado
+            console.log("O novo valor deste produto e: " + precoAtualizado)
+        }
+    }
+}
