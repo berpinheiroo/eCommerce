@@ -12,6 +12,7 @@ function DesejaContinuar() {
         precos[contador] = parseInt(prompt("Insira o preco do produto ", [contador]))
         avaliacoes[contador] = parseInt(prompt("Insira uma avaliacao de 1-5 ao produto ", [contador]))
         contador++
+        console.log("Produto cadastrado com sucesso!")
         continuar = prompt("Deseja adicionar mais produtos? Digite 's' para sim?")
     }
 }
@@ -127,14 +128,55 @@ function OrdemAvaliacao() {
 }
 
 var precoAtualizado
-var idAtualizar = prompt("Insira o ID do produto que queira atualizar")
+var idAtualizar
 
 function AtualizarPreco(idAtualizar) {
+    idAtualizar = prompt("Insira o ID do produto que queira atualizar")
     precoAtualizado = parseInt(prompt("Insira um novo valor para o produto"))
-    for(var index = 0; index < ids.length; index++){
-        if(idAtualizar == ids[index]){
+    for (var index = 0; index < ids.length; index++) {
+        if (idAtualizar == ids[index]) {
             precos[index] = precoAtualizado
             console.log("O novo valor deste produto e: " + precoAtualizado)
         }
     }
+}
+
+var supAvaliacoes = []
+var supPrecos = []
+var supNomes = []
+var supIds = []
+var idExcluir = []
+var idsExcluidos = []
+var nomesExcluidos = []
+var precosExcluidos = []
+var avaliacoesExcluidos = []
+var contadorEx = 0
+
+function excluirProduto() {
+    idExcluir = prompt("Insira a ID do produto que quer excluir")
+    for (var i = 0; i < ids.length; i++) {
+        idExcluir[i] = idExcluir
+        for (var i2 = 0; i2 < ids.length; i2++) {
+            if (idExcluir[i] == ids[i2]) {
+                idsExcluidos[i] = idExcluir
+                ids[i2] = -1
+                nomes[i2] = -1
+                precos[i2] = -1
+                avaliacoes[i2] = -1
+            }
+        }
+        for(var i3 = 0; i3 < ids.length; ids++){
+            if(ids[i3] != -1){
+                supIds[i] = ids[i3]
+                supNomes[i] = nomes[i3]
+                supAvaliacoes[i] = avaliacoes[i3]
+                supPrecos[i] = precos[i3]
+            }
+        }
+    }
+    nomes = supNomes
+    ids = supIds
+    avaliacoes = supAvaliacoes
+    precos = supPrecos
+    console.log("Produto excluido com sucesso")
 }
