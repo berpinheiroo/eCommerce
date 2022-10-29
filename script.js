@@ -57,11 +57,17 @@ function OrdemID() {
             }
         }
     }
+    nomes = nomesId
+    precos = precosId
+    avaliacoes = avaliacoesId
+    ids = idsOrdenados
 }
 OrdemID()
 
 
-
+var avaliacoesPreco = []
+var idsPreco = []
+var nomesPreco = []
 var maiorPreco = 0
 var precosOrdenados = []
 function OrdemPreco() {
@@ -75,15 +81,25 @@ function OrdemPreco() {
         for (var index3 = 0; index3 < precos.length; index3++) {
             if (maiorPreco == precos[index3]) {
                 precosOrdenados[index] = precos[index3]
+                avaliacoesPreco[index] = avaliacoes[index3]
+                nomesPreco[index] = nomes[index3]
+                idsPreco[index] = ids[index3]
                 precos[index3] = 0
+                console.log("ID:", idsPreco[index], " Nome:", nomesPreco[index], " Preco:", precosOrdenados[index], "Avaliacao:", avaliacoesPreco[index])
+                maiorPreco = 1000000
             }
         }
     }
-    console.log(precosOrdenados)
+    nomes = nomesPreco
+    precos = precosOrdenados
+    avaliacoes = avaliacoesPreco
+    ids = idsPreco
 }
 OrdemPreco()
 
-
+var idsAvaliacao = []
+var precosAvaliacao = []
+var nomesAvaliacao = []
 var maiorAvaliacao = 0
 var avaliacoesOrdenadas = []
 function OrdemAvaliacao() {
@@ -96,12 +112,19 @@ function OrdemAvaliacao() {
         }
         for (var index3 = 0; index3 < avaliacoes.length; index3++) {
             if (maiorAvaliacao == avaliacoes[index3]) {
-                avaliacoesOrdenadas[index] = maiorAvaliacao
+                avaliacoesOrdenadas[index] = avaliacoes[index3]
+                idsAvaliacao[index] = ids[index3]
+                nomesAvaliacao[index] = nomes[index3]
+                precosAvaliacao[index] = precos[index3]
                 avaliacoes[index3] = -1
+                console.log("ID:", idsAvaliacao[index], " Nome:", nomesAvaliacao[index], " Preco:", precosAvaliacao[index], "Avaliacao:", avaliacoesOrdenadas[index])
                 maiorAvaliacao = 6
             }
         }
     }
-    console.log(avaliacoesOrdenadas)
+    nomes = nomesAvaliacao
+    precos = precosAvaliacao
+    avaliacoes = avaliacoesOrdenadas
+    ids = idsAvaliacao
 }
 OrdemAvaliacao()
