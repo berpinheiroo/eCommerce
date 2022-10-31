@@ -180,34 +180,31 @@ function excluirProduto() {
     console.log("Produto excluido com sucesso")
 }
 
-var opcao = 0
+var continuar = true
 function escolherAcao(){
-    while(opcao == 0){
+    while(continuar){
     opcao = prompt("Escolha a acao a ser realizada! 1 para cadastrar um produto / 2 para consulta por ID / 3 para consulta por nome / 4 para ordenar por ID / 5 para ordenar por preco / 6 para ordenar por avaliacao / 7 para atualizar o preco de algum produto / 8 para deletar um produto")
     if(opcao == 1){
         DesejaContinuar()
-        opcao = parseInt(prompt("Deseja continuar o programa? Digite 0 para sim"))
     } else if (opcao == 2) {
         ProcurarID()
-        opcao = parseInt(prompt("Deseja continuar o programa? Digite 0 para sim"))
     } else if(opcao == 3) {
         ProcurarNome()
-        opcao = parseInt(prompt("Deseja continuar o programa? Digite 0 para sim"))
     } else if (opcao == 4) {
         OrdemID()
-        opcao = parseInt(prompt("Deseja continuar o programa? Digite 0 para sim"))
     } else if(opcao == 5) {
         OrdemPreco()
-        opcao = parseInt(prompt("Deseja continuar o programa? Digite 0 para sim"))
     } else if(opcao == 6) {
         OrdemAvaliacao()
-        opcao = parseInt(prompt("Deseja continuar o programa? Digite 0 para sim"))
     } else if (opcao == 7) {
         AtualizarPreco(idAtualizar)
-        opcao = parseInt(prompt("Deseja continuar o programa? Digite 0 para sim"))
     } else if (opcao == 8) {
         excluirProduto()
-        opcao = parseInt(prompt("Deseja continuar o programa? Digite 0 para sim"))
+    }
+    var opcaoContinuar = prompt("Deseja continuar fazendo operacoes? s ou n")
+
+    if(opcaoContinuar != "s"){
+        continuar = false
     }
 }
 }
