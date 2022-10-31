@@ -28,7 +28,7 @@ function ProcurarNome() {
     var infoNome = prompt("Insira o nome do produto que deseja buscar")
     for (i = 0; i < nomes.length; i++) {
         if (infoNome == nomes[i])
-            console.log("O produto com o nome", nomes[i], "tem ID:", ids[i], ", preco", precos[i], "R$", "e avaliacao:", avaliacoes[i])
+            console.log("O produto com o nome", nomes[i], "tem ID:", ids[i])
     }
 }
 
