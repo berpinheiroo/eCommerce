@@ -310,3 +310,15 @@ function ExcluirCarrinho(nomeProduto, quantidadeProduto) {
     nomesProdutos = nomesProdutosSup
     quantidadesProdutos = quantidadesProdutosSup
 }
+
+function InformarValorCarrinho() {
+    var valorTotal = 0
+    for (var i = 0; i < nomesProdutos.length; i++) {
+        for (var i2 = 0; i2 < nomes.length; i2++) {
+            if (nomesProdutos[i] == nomes[i2]) {
+                valorTotal = valorTotal + (precos[i2] * quantidadesProdutos[i])
+            }
+        }
+    }
+    console.log("O valor total do seu carrinho é de: R$" + valorTotal + ",00.")
+}
