@@ -151,7 +151,7 @@ var precosExcluidos = []
 var avaliacoesExcluidos = []
 var contadorEx = 0
 
-function excluirProduto() {
+function ExcluirProduto() {
     idExcluir = prompt("Insira a ID do produto que quer excluir")
     for (var i = 0; i < ids.length; i++) {
         idExcluir[i] = idExcluir
@@ -164,8 +164,8 @@ function excluirProduto() {
                 avaliacoes[i2] = -1
             }
         }
-        for(var i3 = 0; i3 < ids.length; ids++){
-            if(ids[i3] != -1){
+        for (var i3 = 0; i3 < ids.length; ids++) {
+            if (ids[i3] != -1) {
                 supIds[i] = ids[i3]
                 supNomes[i] = nomes[i3]
                 supAvaliacoes[i] = avaliacoes[i3]
@@ -181,34 +181,97 @@ function excluirProduto() {
 }
 
 var opcao = 0
-function escolherAcao(){
-    while(opcao == 0){
-    opcao = prompt("Escolha a acao a ser realizada! 1 para cadastrar um produto / 2 para consulta por ID / 3 para consulta por nome / 4 para ordenar por ID / 5 para ordenar por preco / 6 para ordenar por avaliacao / 7 para atualizar o preco de algum produto / 8 para deletar um produto")
-    if(opcao == 1){
-        DesejaContinuar()
-        opcao = parseInt(prompt("Deseja continuar o programa? Digite 0 para sim"))
-    } else if (opcao == 2) {
-        ProcurarID()
-        opcao = parseInt(prompt("Deseja continuar o programa? Digite 0 para sim"))
-    } else if(opcao == 3) {
-        ProcurarNome()
-        opcao = parseInt(prompt("Deseja continuar o programa? Digite 0 para sim"))
-    } else if (opcao == 4) {
-        OrdemID()
-        opcao = parseInt(prompt("Deseja continuar o programa? Digite 0 para sim"))
-    } else if(opcao == 5) {
-        OrdemPreco()
-        opcao = parseInt(prompt("Deseja continuar o programa? Digite 0 para sim"))
-    } else if(opcao == 6) {
-        OrdemAvaliacao()
-        opcao = parseInt(prompt("Deseja continuar o programa? Digite 0 para sim"))
-    } else if (opcao == 7) {
-        AtualizarPreco(idAtualizar)
-        opcao = parseInt(prompt("Deseja continuar o programa? Digite 0 para sim"))
-    } else if (opcao == 8) {
-        excluirProduto()
-        opcao = parseInt(prompt("Deseja continuar o programa? Digite 0 para sim"))
+function EscolherAcao() {
+    while (opcao == 0) {
+        opcao = prompt("Escolha a acao a ser realizada! 1 para cadastrar um produto / 2 para consulta por ID / 3 para consulta por nome / 4 para ordenar por ID / 5 para ordenar por preco / 6 para ordenar por avaliacao / 7 para atualizar o preco de algum produto / 8 para deletar um produto")
+        if (opcao == 1) {
+            DesejaContinuar()
+            opcao = parseInt(prompt("Deseja continuar o programa? Digite 0 para sim"))
+        } else if (opcao == 2) {
+            ProcurarID()
+            opcao = parseInt(prompt("Deseja continuar o programa? Digite 0 para sim"))
+        } else if (opcao == 3) {
+            ProcurarNome()
+            opcao = parseInt(prompt("Deseja continuar o programa? Digite 0 para sim"))
+        } else if (opcao == 4) {
+            OrdemID()
+            opcao = parseInt(prompt("Deseja continuar o programa? Digite 0 para sim"))
+        } else if (opcao == 5) {
+            OrdemPreco()
+            opcao = parseInt(prompt("Deseja continuar o programa? Digite 0 para sim"))
+        } else if (opcao == 6) {
+            OrdemAvaliacao()
+            opcao = parseInt(prompt("Deseja continuar o programa? Digite 0 para sim"))
+        } else if (opcao == 7) {
+            AtualizarPreco(idAtualizar)
+            opcao = parseInt(prompt("Deseja continuar o programa? Digite 0 para sim"))
+        } else if (opcao == 8) {
+            ExcluirProduto()
+            opcao = parseInt(prompt("Deseja continuar o programa? Digite 0 para sim"))
+        }
     }
 }
+var condicao = "s"
+var condicaoTotal = "s"
+var desejarTotal = " "
+var nomeProduto = ""
+var quantidadeProduto = 0
+var nomesProdutos = []
+var quantidadesProdutos = []
+var nomesProdutosSup = []
+var quantidadesProdutosSup = []
+var indexProdutosSup = 0
+var indexCarrinho = 0
+
+
+function CarrinhoLoja() {
+    while (condicao == "s") {
+        opcao = parseInt(prompt("Escolha uma acao: 1 = Adicionar produto ao carrinho // 2 = Excluir produto do carrinho // 3 = Valor total dos produtos // 4 = Listar os produtos do carinho e mostrar o valor"))
+        if (opcao == "1") {
+            nomeProduto = prompt("Insira o nome do produto a inserir no carrinho")
+            quantidadeProduto = parseInt(prompt("Informe a quantidade que deseja adicionar"))
+            AdicionarProduto(nomeProduto, quantidadeProduto)
+        } else if (opcao == "2") {
+            nomeProduto = prompt("Insira o nome do produto que deseja excluir do carrinho")
+            quantidadeProduto = parseInt(prompt("Informe a quantidade que deseja excluir"))
+            ExcluirCarrinho(nomeProduto, quantidadeProduto)
+        } else if (opcao == "3") {
+            InformarValorCarrinho()
+        } else if (opcao == "4") {
+            ListarProdutosCarrinhoValor()
+        }
+        condicao = prompt("Deseja continuar no carrinho? s = sim // n = nao")
+    }
 }
-escolherAcao()
+
+function AdicionarProduto(nomeProduto, quantidadeProduto) {
+    var contador = 0
+    var cont = 0
+
+    for (var i = 0; i < nomesProdutos.length; i++) {
+        if (nomeProduto == nomesProdutos[i]) {
+            quantidadeProduto[i] = quantidadesProdutos[i] + quantidadeProduto
+            console.log("Quantidade adicionada!")
+            contador++
+        }
+    }
+
+    while (contador == 0) {
+        for (var i2 = 0; i2 < nomes.length; i2++) {
+            if (nomeProduto == nomes[i2]) {
+                nomesProdutos[indexCarrinho] = nomeProduto
+                quantidadesProdutos[indexCarrinho] = quantidadeProduto
+                indexCarrinho++
+                console.log("Produto cadastrado!")
+                cont++
+            }
+        }
+        if (cont == 0) {
+            console.log("Não existe nenhum produto com esse nome.")
+        }
+        contador++
+    }
+    console.log(nomesProdutos)
+    console.log(quantidadesProdutos)
+}
+
