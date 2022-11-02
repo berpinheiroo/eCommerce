@@ -275,3 +275,38 @@ function AdicionarProduto(nomeProduto, quantidadeProduto) {
     console.log(quantidadesProdutos)
 }
 
+function ExcluirCarrinho(nomeProduto, quantidadeProduto) {
+    nomesProdutosSup = []
+    quantidadesProdutosSup = []
+
+    for (var i3 = 0; i3 < nomesProdutos.length; i3++) {
+        if (nomeProduto == nomesProdutos[i3] && quantidadesProdutos[i3] == quantidadeProduto) {
+            nomesProdutos[i3] = 0
+            quantidadesProdutos[i3] = 0
+            console.log("Produto excluido!")
+
+        } else if (nomeProduto == nomesProdutos[i3] && quantidadesProdutos[i3] > quantidadeProduto) {
+            quantidadesProdutos[i3] = quantidadesProdutos[i3] - quantidadeProduto
+
+        } else if (nomeProduto == nomesProdutos[i3] && quantidadesProdutos[i3] < quantidadeProduto) {
+            nomesProdutos[i3] = 0
+            quantidadesProdutos[i3] = 0
+            console.log("Produto excluido!")
+        }
+    }
+    for (let index2 = 0; index2 < nomesProdutos.length; index2++) {
+        if (nomesProdutos[index2] != 0 && quantidadesProdutos[index2] != 0) {
+            nomesProdutosSup[indexProdutosSup] = nomesProdutos[index2]
+            quantidadesProdutosSup[indexProdutosSup] = quantidadesProdutos[index2]
+            indexProdutosSup++
+        }
+    }
+
+    console.log(nomesProdutosSup)
+    console.log(quantidadesProdutosSup)
+
+    indexCarrinho--
+    indexProdutosSup = 0
+    nomesProdutos = nomesProdutosSup
+    quantidadesProdutos = quantidadesProdutosSup
+}
