@@ -322,3 +322,39 @@ function InformarValorCarrinho() {
     }
     console.log("O valor total do seu carrinho é de: R$" + valorTotal + ",00.")
 }
+
+function ListarProdutosCarrinhoValor() {
+    var valorTotal = 0
+    var precosCarrinho = []
+    var indexPrecoCarrinho = 0
+    for (var i = 0; i< nomesProdutos.length; i++) {
+        for (var i2 = 0; i2 < nomes.length; i2++) {
+            if (nomesProdutos[i] == nomes[i2]) {
+                valorTotal = valorTotal + (precos[i2] * quantidadesProdutos[i])
+                precosCarrinho[indexPrecoCarrinho] = precos[i2]
+                indexPrecoCarrinho++
+            }
+        }
+    }
+
+    for (var i = 0; i < nomesProdutos.length; i++) {
+        console.log("Produto: " + nomesProdutos[i] + ". Quantidade: " + quantidadesProdutos[i] + ". O valor desse produto é: " + precosCarrinho[i])
+    }
+    console.log("O valor total do seu carrinho é: " + valorTotal)
+}
+
+while(condicaoTotal == "s"){
+    desejarTotal = prompt("O que você deseja no nosso sistema? 1 = Sistema de cadastro // 2 = Carrinho de compras // 3 = Finalizar procedimentos")
+
+    if(desejarTotal == "1"){
+        EscolherAcao()
+        condicao = "s"
+    }
+    if(desejarTotal == "2"){
+        CarrinhoLoja()
+    }
+    if(desejarTotal == "3"){
+        condicaoTotal = "n"
+    }
+
+}
